@@ -5,24 +5,32 @@ document.addEventListener('DOMContentLoaded', function () {
     const taskList = document.getElementById('task-list');
 
     function addTask() {
+
         const taskText = taskInput.value.trim();
 
         if (taskText !== "") {
 
+            // create list item
             const li = document.createElement('li');
             li.textContent = taskText;
 
+            // create remove button
             const removeBtn = document.createElement('button');
             removeBtn.textContent = "Remove";
-            removeBtn.className = 'remove-btn';
+            removeBtn.classList.add('remove-btn');
 
+            // remove task when button is clicked
             removeBtn.onclick = function () {
                 taskList.removeChild(li);
             };
 
+            // append button to li
             li.appendChild(removeBtn);
+
+            // append li to task list
             taskList.appendChild(li);
 
+            // clear input
             taskInput.value = "";
 
         } else {
@@ -37,7 +45,5 @@ document.addEventListener('DOMContentLoaded', function () {
             addTask();
         }
     });
-
-    document.addEventListener('DOMContentLoaded', addTask);
 
 });
